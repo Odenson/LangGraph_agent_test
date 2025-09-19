@@ -1,0 +1,7 @@
+flask
+langgraph
+langchain
+langchain-tavily
+python-dotenv
+rich
+ipython
