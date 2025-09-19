@@ -4,7 +4,7 @@ from langchain.chat_models import init_chat_model
 
 from typing import Annotated
 from langchain_tavily import TavilySearch
-from langchain_core.messages import BaseMessage, SystemMessage
+from langchain_core.messages import HumanMessage, SystemMessage
 from typing_extensions import TypedDict
 
 from langgraph.graph import StateGraph, START, END
@@ -72,7 +72,7 @@ if __name__ == "__main__":
     system_prompt = SystemMessage(content="Be concise. Respond with only the essential information.")
 
     # Example question to ask the chatbot
-    question = "What was the largest stock market crash and why?"
+    question = HumanMessage(content="What was the largest stock market crash and why?")
 
     # Prepend the system prompt to the messages
     messages = [system_prompt, question]
