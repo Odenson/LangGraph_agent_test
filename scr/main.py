@@ -71,8 +71,11 @@ if __name__ == "__main__":
     # Example system prompt to reduce verbosity
     system_prompt = SystemMessage(content="Be concise. Respond with only the essential information.")
 
-    # Example question to ask the chatbot
-    question = HumanMessage(content="What was the largest stock market crash and why?")
+    # Prompt the user for a question in the terminal
+    user_input = input("Enter your question for the chatbot: ").strip()
+    if not user_input:
+        user_input = "What was the largest stock market crash and why?"
+    question = HumanMessage(content=user_input)
 
     # Prepend the system prompt to the messages
     messages = [system_prompt, question]
