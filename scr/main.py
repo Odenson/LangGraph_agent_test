@@ -3,7 +3,7 @@ from flask.cli import load_dotenv
 from langchain.chat_models import init_chat_model
 
 from typing import Annotated
-from langchain_tavily import TavilySearch
+#from langchain_tavily import TavilySearch
 from langchain_core.messages import HumanMessage, SystemMessage
 from typing_extensions import TypedDict
 
@@ -13,6 +13,9 @@ from langgraph.prebuilt import ToolNode, tools_condition
 
 from rich.console import Console
 from rich.panel import Panel
+
+from scr.tools.tavily_tool import tavily_tool
+from scr.tools.count_tokens import count_tokens
 
 # Load environment variables from .env file
 load_dotenv()  
@@ -31,14 +34,14 @@ class State(TypedDict):
 graph_builder = StateGraph(State)
 
 # Initialize the Tavily search tool
-tool = TavilySearch(
-    max_results=2,
-    topic="general",
-    # Additional options can be set here if needed
-)
+#tool = TavilySearch(
+#    max_results=2,
+#    topic="general",
+#    # Additional options can be set here if needed
+#)
 
 # List of tools to be used by the model
-tools = [tool]
+tools = [tavily_tool, count_tokens]
 
 # Bind the tools to the language model
 llm_with_tools = llm.bind_tools(tools)
@@ -72,7 +75,7 @@ if __name__ == "__main__":
     system_prompt = SystemMessage(content="Be concise. Respond with only the essential information.")
 
     # Prompt the user for a question in the terminal
-    user_input = input("Enter your question for the chatbot: ").strip()
+    user_input = input("Enter your question for the chatbot, or press enter for default: ").strip()
     if not user_input:
         user_input = "What was the largest stock market crash and why?"
     question = HumanMessage(content=user_input)
