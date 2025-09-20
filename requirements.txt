@@ -5,3 +5,5 @@ langchain-tavily
 python-dotenv
 rich
 ipython
+langchain-openai
+langchain-core

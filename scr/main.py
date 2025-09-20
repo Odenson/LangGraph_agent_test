@@ -33,13 +33,6 @@ class State(TypedDict):
 # Create a new state graph for the conversation
 graph_builder = StateGraph(State)
 
-# Initialize the Tavily search tool
-#tool = TavilySearch(
-#    max_results=2,
-#    topic="general",
-#    # Additional options can be set here if needed
-#)
-
 # List of tools to be used by the model
 agent_tools = [tavily_tool, count_tokens]
 
@@ -72,7 +65,7 @@ graph = graph_builder.compile()
 
 if __name__ == "__main__":
     # Example system prompt to reduce verbosity
-    system_prompt = SystemMessage(content="Be concise. Respond with only the essential information.")
+    system_prompt = SystemMessage(content="Answer the user question and be concise. Respond with only the essential information. Also include a details of token usage and the total number of characters used at the end of your answer.")
 
     # Prompt the user for a question in the terminal
     user_input = input("Enter your question for the chatbot, or press enter for default: ").strip()
