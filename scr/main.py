@@ -14,8 +14,8 @@ from langgraph.prebuilt import ToolNode, tools_condition
 from rich.console import Console
 from rich.panel import Panel
 
-from scr.tools.tavily_tool import tavily_tool
-from scr.tools.count_tokens import count_tokens
+from tavily_tool import tavily_tool
+from count_tokens import count_tokens
 
 # Load environment variables from .env file
 load_dotenv()  
@@ -41,10 +41,10 @@ graph_builder = StateGraph(State)
 #)
 
 # List of tools to be used by the model
-tools = [tavily_tool, count_tokens]
+agent_tools = [tavily_tool, count_tokens]
 
 # Bind the tools to the language model
-llm_with_tools = llm.bind_tools(tools)
+llm_with_tools = llm.bind_tools(agent_tools)
 
 # Define the chatbot node logic
 def chatbot(state: State):
@@ -55,7 +55,7 @@ def chatbot(state: State):
 graph_builder.add_node("chatbot", chatbot)
 
 # Create and add the tool node to the graph
-tool_node = ToolNode(tools=[tool])
+tool_node = ToolNode(tools=agent_tools)
 graph_builder.add_node("tools", tool_node)
 
 # Add conditional edges: if a tool is needed, go to the tool node
