@@ -63,9 +63,12 @@ graph_builder.add_edge(START, "chatbot")
 # Compile the graph for execution
 graph = graph_builder.compile()
 
+# system prompt
+system_prompt = SystemMessage(content="Answer the user question and be concise. Respond with only the essential information. Also include a details of token usage and the total number of characters used at the end of your answer.")
+
 if __name__ == "__main__":
-    # Example system prompt to reduce verbosity
-    system_prompt = SystemMessage(content="Answer the user question and be concise. Respond with only the essential information. Also include a details of token usage and the total number of characters used at the end of your answer.")
+    # system prompt
+    #system_prompt = SystemMessage(content="Answer the user question and be concise. Respond with only the essential information. Also include a details of token usage and the total number of characters used at the end of your answer.")
 
     # Prompt the user for a question in the terminal
     user_input = input("Enter your question for the chatbot, or press enter for default: ").strip()

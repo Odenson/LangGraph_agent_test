@@ -29,14 +29,7 @@ def count_tokens(messages: list) -> str:
 
     # Estimate token count: roughly 1 token per 4 characters (a common heuristic)
     token_estimate = char_count // 4
-
-    # Return the results
-    #return (
-    #    f"Estimated token count for this interaction: {token_estimate} tokens "
-    #    f"(based on {char_count} characters). "
-    #   f"Number of responses in this interaction: {response_count}."
-    #)
-
+    
     # Build a JSON object with interaction details
     result = {
         "character_count": char_count,
