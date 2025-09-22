@@ -64,16 +64,19 @@ graph_builder.add_edge(START, "chatbot")
 graph = graph_builder.compile()
 
 # system prompt
-system_prompt = SystemMessage(content="Answer the user question and be concise. Respond with only the essential information. Also include a details of token usage and the total number of characters used at the end of your answer.")
+system_prompt = SystemMessage(
+    content=(
+        "Answer the user question and be concise. Respond with only the essential information."
+        "Also include a details of token usage and the total number of characters used at the end of your answer."   
+    )
+)
 
 if __name__ == "__main__":
-    # system prompt
-    #system_prompt = SystemMessage(content="Answer the user question and be concise. Respond with only the essential information. Also include a details of token usage and the total number of characters used at the end of your answer.")
-
     # Prompt the user for a question in the terminal
     user_input = input("Enter your question for the chatbot, or press enter for default: ").strip()
     if not user_input:
         user_input = "What was the largest stock market crash and why?"
+        
     question = HumanMessage(content=user_input)
 
     # Prepend the system prompt to the messages
@@ -89,4 +92,4 @@ if __name__ == "__main__":
     # Print the answer in a styled panel
     console.print(Panel(formatted_answer, title="Answer", border_style="blue"))
 
-print("Done")
+    print("Done")

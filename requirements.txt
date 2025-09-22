@@ -7,3 +7,4 @@ rich
 ipython
 langchain-openai
 langchain-core
+langchain_google_community
