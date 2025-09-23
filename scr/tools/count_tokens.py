@@ -1,13 +1,13 @@
 from langchain.tools import tool
 import json
 
-# Register this function as a LangChain tool (so it can be called in agents or chains)
+# Register this function as a LangChain tool
 @tool
 def count_tokens(messages: list) -> str:
     """
     Counts the number of characters in the messages, estimates the token count,
-    and counts the number of responses in the interaction.
-    Returns a string with the estimated token count and response count.
+    and counts the number characters in the messages.
+    Returns a json with the estimated token count and character count.
     """
 
     text = ""

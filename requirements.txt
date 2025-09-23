@@ -8,3 +8,5 @@ ipython
 langchain-openai
 langchain-core
 langchain_google_community
+tavily_python
+
