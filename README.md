@@ -17,23 +17,32 @@ The agent uses OpenAI's GPT-4.1 model and can be extended with additional tools.
 
 1. **Clone the repository:**
    ```sh
-   git clone <your-repo-url>
+   git clone https://github.com/Odenson/LangGraph_agent_test
    cd langGraph_agent_test
    ```
 
-2. **Install dependencies:**
-   ```sh
-   pip install -r requirements.txt
-   ```
+2. **Set up environment variables:**
+  - Create a `.env` file in the project root with your API keys:
+    ```
+    OPENAI_API_KEY=your-openai-key
+    TAVILY_API_KEY=your-tavily-key
+    GOOGLE_API_KEY=your-google-key
+    GOGGLE_CSE_ID=your-CSE-ID
+    PYTHONPATH=./scr;./scr/tools
+    ```
+  - Create your env:
+    ```
+    uv init
+    uv python install 3.12
+    uv venv --python 3.12
+    source .venv/bin/activate
+    .venv\Scripts\activate
+    ```
 
-3. **Set up environment variables:**
-   - Create a `.env` file in the project root with your API keys:
-     ```
-     OPENAI_API_KEY=your-openai-key
-     TAVILY_API_KEY=your-tavily-key
-     GOOGLE_API_KEY=your-google-key
-     GOGGLE_CSE_ID=your-CSE-ID
-     ```
+3. **Install dependencies:**
+   ```sh
+   uv sync
+   ```
 
 ## Usage
 
