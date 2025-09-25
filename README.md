@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project demonstrates a conversational agent using [LangGraph](https://github.com/langchain-ai/langgraph), [LangChain](https://github.com/langchain-ai/langchain), and the Tavily search tool.  
+This project demonstrates a conversational agent using [LangGraph](https://github.com/langchain-ai/langgraph), [LangChain](https://github.com/langchain-ai/langchain), and the several tool.  
 It features a graph-based conversation flow, tool integration, and a system prompt to control the verbosity of responses.  
 The agent uses OpenAI's GPT-4.1 model and can be extended with additional tools.
 
@@ -31,6 +31,8 @@ The agent uses OpenAI's GPT-4.1 model and can be extended with additional tools.
      ```
      OPENAI_API_KEY=your-openai-key
      TAVILY_API_KEY=your-tavily-key
+     GOOGLE_API_KEY=your-google-key
+     GOGGLE_CSE_ID=your-CSE-ID
      ```
 
 ## Usage
@@ -38,7 +40,7 @@ The agent uses OpenAI's GPT-4.1 model and can be extended with additional tools.
 Run the main script:
 
 ```sh
-python scr/main.py
+python scr/agentMain.py
 ```
 
 You will see a concise answer to the example question, formatted using Rich.
@@ -50,18 +52,20 @@ langGraph_agent_test/
 │
 ├── scr/
 │   └── main.py         # Main application code
+|   └── tools/
+|       └── agent-tools 
 ├── test/
 │   └── test_main.py    # Unit tests
-├── requirements.txt    # Python dependencies
+├── pyproject.toml      # UV dependencies
 └── .env                # (Not committed) API keys
 ```
 
 ## Customization
 
 - **Change the system prompt:**  
-  Edit the `system_prompt` in `main.py` to adjust the agent's response style.
+  Edit the `system_prompt` in `agentMain.py` to adjust the agent's response style.
 - **Change the question:**  
-  Modify the `question` variable in `main.py` to ask different questions.
+  Modify the default `question` variable in `agentMain.py` to ask different questions.
 - **Add more tools:**  
   Add additional tools to the `tools` list and bind them to the model.
 
