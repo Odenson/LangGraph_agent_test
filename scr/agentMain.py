@@ -16,6 +16,7 @@ from rich.panel import Panel
 from tools.tavily_tool import tavily_tool
 from tools.count_tokens import count_tokens
 from tools.google_search import google_search
+from tools.answerQuality import answer_similarity
 
 # Load environment variables from .env file
 load_dotenv()  
@@ -57,7 +58,7 @@ graph_builder.add_node("tools", tool_node)
 #graph_builder.add_node("google_search", ToolNode(tools=[google_search]))
 
 graph_builder.add_node("count_tokens", ToolNode(tools=[count_tokens])) # Add a separate node for the count_tokens tool as it must run last
-
+graph_builder.add_node("answer_similarity", ToolNode(tools=[answer_similarity])) # Add a separate node for the answer_similarity tool
 
 # Add conditional edges: if a tool is needed, go to the tool node
 graph_builder.add_conditional_edges(
@@ -73,6 +74,7 @@ graph_builder.add_edge("tools", "chatbot")
 #graph_builder.add_edge("chatbot", "google_search")
 
 graph_builder.add_edge("chatbot", "count_tokens")
+graph_builder.add_edge("chatbot", "answer_similarity")
 # End the graph after the count_tokens node
 graph_builder.add_edge("count_tokens", END)
 # Compile the graph for execution
@@ -91,8 +93,9 @@ system_prompt = SystemMessage(
         " <Answer from Tavily> : source <URL> "
         " <Answer from Google Search> : source <URL> "
         " "
-        " Tool (Tokens used: <estimated_token_count>, Characters used: <character_count>). These values must be obtained from the count_tokens tool without alteration."
-        " LLM (Tokens used: <total_tokens>). This information must be obtained from the LLM response looking for the response metadata for the total_tokens values."
+        " Agent Tool (Tokens used: <estimated_token_count>, Characters used: <character_count>). These values must be obtained from the count_tokens tool without alteration."
+        " LLM Details (Tokens used: <total_tokens>). This information must be obtained from the LLM response looking for the response metadata for the total_tokens values."
+        " The similarity of the two answers is <similarity_percentage>% (similarity score: <similarity_score>). This information must be obtained from the answer_similarity tool without alteration."
     )
 )
 
