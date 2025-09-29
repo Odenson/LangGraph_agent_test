@@ -813,6 +813,21 @@ wheels = [
 ]
 
 [[package]]
+name = "langchain-tavily"
+version = "0.2.11"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "aiohttp" },
+    { name = "langchain" },
+    { name = "langchain-core" },
+    { name = "requests" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/17/bb/63ce4058684dddf525af3c8e5dcfab15c5f17515d20241ef6e726ac9e8b7/langchain_tavily-0.2.11.tar.gz", hash = "sha256:ab4f5d0f7fcb276a3905aef2e38c21a334b6cbfc86b405a3238fdc9c6eae1290", size = 22382, upload-time = "2025-07-25T17:26:33.41Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a8/5a/9326f125b4d3055a96200a5035016efe1aac46149cdafc7182e56710fcfe/langchain_tavily-0.2.11-py3-none-any.whl", hash = "sha256:358317c18fbb26500bca665301450e38945f1f4f6a6f4e06406c7674a76c8d5c", size = 26187, upload-time = "2025-07-25T17:26:32.324Z" },
+]
+
+[[package]]
 name = "langchain-text-splitters"
 version = "0.3.11"
 source = { registry = "https://pypi.org/simple" }
@@ -852,7 +867,9 @@ dependencies = [
     { name = "langchain-core" },
     { name = "langchain-google-community" },
     { name = "langchain-openai" },
+    { name = "langchain-tavily" },
     { name = "langgraph" },
+    { name = "logging" },
     { name = "rich" },
     { name = "scikit-learn" },
 ]
@@ -865,7 +882,9 @@ requires-dist = [
     { name = "langchain-core", specifier = ">=0.3.76" },
     { name = "langchain-google-community", specifier = ">=2.0.10" },
     { name = "langchain-openai", specifier = ">=0.3.33" },
+    { name = "langchain-tavily", specifier = ">=0.2.11" },
     { name = "langgraph", specifier = ">=0.6.7" },
+    { name = "logging", specifier = ">=0.4.9.6" },
     { name = "rich", specifier = ">=14.1.0" },
     { name = "scikit-learn", specifier = ">=1.7.2" },
 ]
@@ -926,6 +945,12 @@ sdist = { url = "https://files.pythonhosted.org/packages/55/f5/edbdf89a162ee0253
 wheels = [
     { url = "https://files.pythonhosted.org/packages/3e/8e/e7a43d907a147e1f87eebdd6737483f9feba52a5d4b20f69d0bd6f2fa22f/langsmith-0.4.31-py3-none-any.whl", hash = "sha256:64f340bdead21defe5f4a6ca330c11073e35444989169f669508edf45a19025f", size = 386347, upload-time = "2025-09-25T04:18:16.69Z" },
 ]
+
+[[package]]
+name = "logging"
+version = "0.4.9.6"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/93/4b/979db9e44be09f71e85c9c8cfc42f258adfb7d93ce01deed2788b2948919/logging-0.4.9.6.tar.gz", hash = "sha256:26f6b50773f085042d301085bd1bf5d9f3735704db9f37c1ce6d8b85c38f2417", size = 96029, upload-time = "2013-06-04T23:43:22.086Z" }
 
 [[package]]
 name = "markdown-it-py"

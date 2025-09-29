@@ -125,22 +125,6 @@ if __name__ == "__main__":
 
     # Invoke the graph with the initial messages
     answer = graph.invoke({"messages": messages})
-
-    #testing tool invocations
-    printToolDetails = False
-    if printToolDetails:
-        #display the graph in the console
-        print(graph.get_graph().draw_ascii())
-        #tool details
-        print("\n" + "-" *20+ " count_tokens Details " + "-" * 20)
-        raw_output = count_tokens.invoke({"messages": answer["messages"]})
-        print(raw_output)
-        print("\n" + "-" *20+ " tavily_tool Details " + "-" * 20)
-        raw_output = tavily_tool.invoke({"messages": [question]})
-        print(raw_output)
-        print("\n" + "-" *20+ " Google Search Details " + "-" * 20)
-        raw_output = google_search.invoke({"query": user_input})
-        print(raw_output)
     
     # Get the formatted answer from the response
     formatted_answer = answer["messages"][-1].content
