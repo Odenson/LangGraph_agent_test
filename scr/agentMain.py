@@ -115,6 +115,7 @@ if __name__ == "__main__":
     user_input = input("Enter your question for the chatbot, or press enter for default: \n\n").strip()
     if not user_input:
         user_input = "What is the worlds largest dog breed?"
+        print("Using default question, What is the worlds largest dog breed?")
 
     print("\n" + "-" *61)
 
@@ -125,6 +126,10 @@ if __name__ == "__main__":
 
     # Invoke the graph with the initial messages
     answer = graph.invoke({"messages": messages})
+
+    #ai_msg = llm_with_tools.invoke(messages)
+    #print(ai_msg)
+    #ai_msg.tool_calls
     
     # Get the formatted answer from the response
     formatted_answer = answer["messages"][-1].content
